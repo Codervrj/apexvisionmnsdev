@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Accounting Services - Apex Vision MNS</title>
+    <meta
+      name="description"
+      content="Discover our comprehensive accounting services including tax planning, bookkeeping, financial reporting, and more."
+    />
+    <link rel="icon" type="image/png" href="/attached_assests/favicon.jpg" />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Page-specific styles */
+      .accounting-header {
+        background: linear-gradient(45deg, var(--primary), var(--secondary));
+        color: white;
+        padding: 5rem 0;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .accounting-header::before {
+        content: "";
+        position: absolute;
+        top: -100px;
+        right: -100px;
+        width: 400px;
+        height: 400px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+      }
+
+      .accounting-cards {
+        padding: 5rem 0;
+        background-color: #e5eeffeb;
+      }
+
+      .accounting-card-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .accounting-card {
+        background-color: rgb(255, 251, 251);
+        border-radius: var(--border-radius);
+        padding: 2rem;
+        box-shadow: var(--box-shadow);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .accounting-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--primary);
+        z-index: -1;
+        transform: scaleY(0);
+        transform-origin: bottom;
+        transition: transform 0.4s ease;
+      }
+
+      .accounting-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+      }
+
+      .accounting-card:hover::before {
+        transform: scaleY(1);
+      }
+
+      .accounting-card:hover .accounting-card-title,
+      .accounting-card:hover .accounting-card-description {
+        color: white;
+      }
+
+      .accounting-card-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 60px;
+        height: 60px;
+        background-color: rgba(59, 130, 246, 0.1);
+        color: var(--primary);
+        border-radius: 50%;
+        margin-bottom: 1.5rem;
+        font-size: 1.5rem;
+        transition: all 0.3s ease;
+      }
+
+      .accounting-card:hover .accounting-card-icon {
+        background-color: rgba(255, 255, 255, 0.2);
+        color: white;
+      }
+
+      .accounting-card-title {
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
+        transition: all 0.3s ease;
+      }
+
+      .accounting-card-description {
+        color: var(--neutral-300);
+        font-size: 0.95rem;
+        transition: all 0.3s ease;
+        flex-grow: 1;
+      }
+
+      .mission-section {
+        padding: 5rem 0;
+      }
+
+      .mission-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        align-items: center;
+      }
+
+      .mission-content h2 {
+        font-size: 2.25rem;
+        margin-bottom: 1.5rem;
+        /* color: var(--neutral-400); */
+        color: #164a9e;
+      }
+
+      .mission-content p {
+        margin-bottom: 1.5rem;
+        color: var(--neutral-300);
+        line-height: 1.7;
+      }
+
+      .core-principles {
+        margin-top: 2rem;
+      }
+
+      .core-principles h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1.25rem;
+        /* color: var(--neutral-400); */
+        color: #164a9e;
+      }
+
+      .principle-item {
+        display: flex;
+        margin-bottom: 1.25rem;
+      }
+
+      .principle-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 2.5rem;
+        height: 2.5rem;
+        background-color: rgba(59, 130, 246, 0.1);
+        color: var(--primary);
+        border-radius: 50%;
+        margin-right: 1rem;
+      }
+
+      .principle-content h4 {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+        color: var(--neutral-400);
+      }
+
+      .principle-content p {
+        font-size: 0.95rem;
+        color: var(--neutral-300);
+        margin-bottom: 0;
+      }
+
+      .highlights-image {
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        position: relative;
+        height: 100%;
+        min-height: 400px;
+        box-shadow: var(--box-shadow);
+      }
+
+      .highlights-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .highlight-badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+
+      .highlight-badge {
+        display: flex;
+        align-items: center;
+        padding: 0.75rem 1.25rem;
+        background-color: rgb(255, 251, 251);
+        border-radius: var(--border-radius);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+      }
+
+      .highlight-badge:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .highlight-badge i {
+        color: var(--primary);
+        margin-right: 0.75rem;
+        font-size: 1.25rem;
+      }
+
+      .highlight-badge span {
+        font-weight: 600;
+        color: var(--neutral-400);
+      }
+
+      .services-offered {
+        padding: 5rem 0;
+      }
+
+      .industries-section {
+        padding: 5rem 0;
+      }
+
+      .expertise-section {
+        padding: 5rem 0;
+      }
+
+      .expertise-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 2rem;
+      }
+
+      .expertise-card {
+        background-color: rgb(255, 251, 251);
+        border-radius: var(--border-radius);
+        padding: 2rem;
+        box-shadow: var(--box-shadow);
+        transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .expertise-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .expertise-icon {
+        width: 3rem;
+        height: 3rem;
+        background-color: rgba(59, 130, 246, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+        color: var(--primary);
+        font-size: 1.5rem;
+        transition: all 0.3s ease;
+      }
+
+      .expertise-card:hover .expertise-icon {
+        background-color: var(--primary);
+        color: white;
+      }
+
+      .expertise-title {
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
+      }
+
+      .expertise-description {
+        color: var(--neutral-300);
+        line-height: 1.6;
+      }
+
+      @media (max-width: 992px) {
+        .mission-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .highlights-image {
+          min-height: 300px;
+          margin-top: 2rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .accounting-card-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .expertise-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header and Navigation -->
+    <header class="header">
+      <div class="navbar-container">
+        <nav class="navbar">
+          <a href="index.html" style="text-decoration: none">
+            <div class="logo">
+              <div class="logo-icon">
+                <img class="logo-img" src="attached_assests/logo.jpg" alt="" />
+              </div>
+              <span class="logo-text">
+                <span class="logo-apex">Apex</span
+                ><span class="logo-vision"> Vision</span> MNS
+              </span>
+            </div>
+          </a>
+
+          <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+
+          <div class="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Mobile Navigation Menu -->
+    <div class="mobile-menu">
+      <div class="mobile-menu-header">
+        <span>Menu</span>
+        <button class="close-menu-btn"><i class="fas fa-times"></i></button>
+      </div>
+      <ul class="mobile-nav-links">
+        <li>
+          <a href="index.html"><i class="fas fa-home"></i> Home</a>
+        </li>
+        <li>
+          <a href="services.html"><i class="fas fa-th-large"></i> Services</a>
+        </li>
+        <li>
+          <a href="about.html"><i class="fas fa-info-circle"></i> About Us</a>
+        </li>
+        <li>
+          <a href="contact.html"><i class="fas fa-phone"></i> Contact</a>
+        </li>
+      </ul>
+    </div>
+
+    <main>
+      <!-- Accounting Header -->
+      <section class="accounting-header">
+        <div class="container">
+          <h1>Accounting Services</h1>
+          <p>Professional accounting solutions to help your business succeed</p>
+        </div>
+      </section>
+
+      <!-- Accounting Service Cards -->
+      <section class="accounting-cards">
+        <div class="container">
+          <div class="section-header">
+            <h2>Our Accounting Services</h2>
+            <p>
+              We offer a wide range of accounting services tailored to your
+              business needs
+            </p>
+          </div>
+
+          <div class="accounting-card-grid">
+            <!-- Card 1: Tax Planning & Preparation -->
+            <div class="accounting-card">
+              <div class="accounting-card-icon">
+                <i class="fas fa-file-invoice-dollar"></i>
+              </div>
+              <h3 class="accounting-card-title">Tax Planning & Preparation</h3>
+              <p class="accounting-card-description">
+                Strategic tax planning and preparation services to minimize tax
+                liabilities and ensure compliance with tax laws.
+              </p>
+            </div>
+
+            <!-- Card 2: Bookkeeping -->
+            <div class="accounting-card">
+              <div class="accounting-card-icon">
+                <i class="fas fa-book"></i>
+              </div>
+              <h3 class="accounting-card-title">Bookkeeping</h3>
+              <p class="accounting-card-description">
+                Accurate and timely recording of financial transactions to
+                maintain organized financial records.
+              </p>
+            </div>
+
+            <!-- Card 3: Financial Reporting -->
+            <div class="accounting-card">
+              <div class="accounting-card-icon">
+                <i class="fas fa-chart-bar"></i>
+              </div>
+              <h3 class="accounting-card-title">Financial Reporting</h3>
+              <p class="accounting-card-description">
+                Comprehensive financial reporting services to provide insights
+                into your business's financial health.
+              </p>
+            </div>
+
+            <!-- Card 4: Payroll Services -->
+            <div class="accounting-card">
+              <div class="accounting-card-icon">
+                <i class="fas fa-money-bill-wave"></i>
+              </div>
+              <h3 class="accounting-card-title">Payroll Services</h3>
+              <p class="accounting-card-description">
+                Efficient payroll processing and management to ensure accurate
+                and timely employee compensation.
+              </p>
+            </div>
+
+            <!-- Card 5: Business Advisory -->
+            <div class="accounting-card">
+              <div class="accounting-card-icon">
+                <i class="fas fa-lightbulb"></i>
+              </div>
+              <h3 class="accounting-card-title">Business Advisory</h3>
+              <p class="accounting-card-description">
+                Strategic business advice and consulting to help you make
+                informed decisions and achieve your goals.
+              </p>
+            </div>
+
+            <!-- Card 6: Audit & Assurance -->
+            <div class="accounting-card">
+              <div class="accounting-card-icon">
+                <i class="fas fa-search-dollar"></i>
+              </div>
+              <h3 class="accounting-card-title">Audit & Assurance</h3>
+              <p class="accounting-card-description">
+                Thorough audit and assurance services to verify financial
+                information and enhance credibility.
+              </p>
+            </div>
+
+            <!-- Card 7: Financial Analysis -->
+            <div class="accounting-card">
+              <div class="accounting-card-icon">
+                <i class="fa-solid fa-chart-bar"></i>
+              </div>
+              <h3 class="accounting-card-title">Financial Analysis</h3>
+              <p class="accounting-card-description">
+                In-depth financial analysis to identify trends, opportunities,
+                and areas for improvement.
+              </p>
+            </div>
+
+            <!-- Card 8: Budgeting & Forecasting -->
+            <div class="accounting-card">
+              <div class="accounting-card-icon">
+                <i class="fas fa-chart-line"></i>
+              </div>
+              <h3 class="accounting-card-title">Budgeting & Forecasting</h3>
+              <p class="accounting-card-description">
+                Strategic budgeting and forecasting to help plan for future
+                growth and financial stability.
+              </p>
+            </div>
+
+            <!-- Card 9: Cash Flow Management -->
+            <div class="accounting-card">
+              <div class="accounting-card-icon">
+                <i class="fas fa-coins"></i>
+              </div>
+              <h3 class="accounting-card-title">Cash Flow Management</h3>
+              <p class="accounting-card-description">
+                Effective cash flow management strategies to ensure financial
+                stability and growth.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Mission and Core Principles Section -->
+      <section class="mission-section">
+        <div class="container">
+          <div class="mission-grid">
+            <div class="mission-content">
+              <h2>Our Mission & Core Principles</h2>
+              <p>
+                At Apex Vision MNS, our accounting mission is to provide
+                exceptional financial services that empower businesses to
+                achieve their financial goals and drive sustainable growth.
+              </p>
+              <p>
+                We believe in building strong relationships with our clients
+                based on trust, expertise, and a commitment to excellence,
+                helping them navigate complex financial landscapes with
+                confidence.
+              </p>
+
+              <div class="core-principles">
+                <h3>Our Core Principles</h3>
+
+                <div class="principle-item">
+                  <div class="principle-icon">
+                    <i class="fas fa-check"></i>
+                  </div>
+                  <div class="principle-content">
+                    <h4>Accuracy & Integrity</h4>
+                    <p>
+                      We maintain the highest standards of accuracy and
+                      integrity in all our financial services.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="principle-item">
+                  <div class="principle-icon">
+                    <i class="fas fa-shield-alt"></i>
+                  </div>
+                  <div class="principle-content">
+                    <h4>Confidentiality</h4>
+                    <p>
+                      We safeguard your financial information with the utmost
+                      confidentiality and security.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="principle-item">
+                  <div class="principle-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                  </div>
+                  <div class="principle-content">
+                    <h4>Continuous Learning</h4>
+                    <p>
+                      We stay updated with the latest accounting practices and
+                      regulations to provide the best service.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="principle-item">
+                  <div class="principle-icon">
+                    <i class="fas fa-handshake"></i>
+                  </div>
+                  <div class="principle-content">
+                    <h4>Client Partnership</h4>
+                    <p>
+                      We work as partners with our clients, understanding their
+                      unique needs and goals.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="highlights-section">
+              <div class="highlights-image">
+                <img
+                  src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=800"
+                  alt="Accounting professionals"
+                />
+              </div>
+
+              <div class="highlight-badges">
+                <div class="highlight-badge">
+                  <i class="fas fa-clock"></i>
+                  <span>24/7 Support</span>
+                </div>
+
+                <div class="highlight-badge">
+                  <i class="fas fa-award"></i>
+                  <span>25+ Years Experience</span>
+                </div>
+
+                <div class="highlight-badge">
+                  <i class="fas fa-certificate"></i>
+                  <span>Certified Accountants</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Services Offered Section -->
+      <section class="services-offered">
+        <div class="container">
+          <div class="section-header">
+            <h2>Specialized Accounting Services</h2>
+            <p>
+              Our specialized accounting services designed to meet specific
+              business needs
+            </p>
+          </div>
+
+          <div class="expertise-grid">
+            <div class="expertise-card">
+              <div class="expertise-icon">
+                <i class="fas fa-building"></i>
+              </div>
+              <h3 class="expertise-title">Corporate Accounting</h3>
+              <p class="expertise-description">
+                Comprehensive corporate accounting services tailored for
+                businesses of all sizes, including financial statement
+                preparation and analysis.
+              </p>
+            </div>
+
+            <div class="expertise-card">
+              <div class="expertise-icon">
+                <i class="fas fa-laptop-code"></i>
+              </div>
+              <h3 class="expertise-title">Technology Integration</h3>
+              <p class="expertise-description">
+                Implementation and integration of accounting software and
+                systems to streamline financial processes and improve
+                efficiency.
+              </p>
+            </div>
+
+            <div class="expertise-card">
+              <div class="expertise-icon">
+                <i class="fas fa-chart-pie"></i>
+              </div>
+              <h3 class="expertise-title">Financial Planning</h3>
+              <p class="expertise-description">
+                Strategic financial planning services to help businesses set
+                financial goals and develop plans to achieve them.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Industries Section -->
+      <section class="industries-section">
+        <div class="container">
+          <div class="section-header">
+            <h2>Industries We Serve</h2>
+            <p>Our accounting expertise spans across various industries</p>
+          </div>
+
+          <div class="mission-grid">
+            <div class="highlights-image">
+              <img
+                src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=800"
+                alt="Business professionals"
+              />
+            </div>
+
+            <div class="mission-content">
+              <p>
+                Our team of experienced accountants has worked with businesses
+                across various industries, providing tailored financial
+                solutions that address specific industry challenges.
+              </p>
+
+              <div class="core-principles">
+                <div class="principle-item">
+                  <div class="principle-icon">
+                    <i class="fas fa-heartbeat"></i>
+                  </div>
+                  <div class="principle-content">
+                    <h4>Healthcare</h4>
+                    <p>
+                      Specialized accounting services for healthcare providers,
+                      practices, and facilities.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="principle-item">
+                  <div class="principle-icon">
+                    <i class="fas fa-store"></i>
+                  </div>
+                  <div class="principle-content">
+                    <h4>Retail & Wholesale</h4>
+                    <p>
+                      Financial services tailored for retail and wholesale
+                      businesses.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="principle-item">
+                  <div class="principle-icon">
+                    <i class="fas fa-industry"></i>
+                  </div>
+                  <div class="principle-content">
+                    <h4>Manufacturing</h4>
+                    <p>
+                      Accounting solutions designed for the manufacturing
+                      industry.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="principle-item">
+                  <div class="principle-icon">
+                    <i class="fas fa-hotel"></i>
+                  </div>
+                  <div class="principle-content">
+                    <h4>Hospitality & Services</h4>
+                    <p>
+                      Financial management for hospitality and service-based
+                      businesses.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="principle-item">
+                  <div class="principle-icon">
+                    <i class="fas fa-home"></i>
+                  </div>
+                  <div class="principle-content">
+                    <h4>Real Estate</h4>
+                    <p>
+                      Specialized accounting for real estate investors,
+                      developers, and property managers.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <p>
+                We understand the unique financial challenges and opportunities
+                in each industry, allowing us to provide specialized insights
+                and solutions that drive financial success.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Our Expertise Section -->
+      <section class="expertise-section">
+        <div class="container">
+          <div class="section-header">
+            <h2>Our Financial Expertise</h2>
+            <p>
+              Areas where we excel in providing exceptional accounting services
+            </p>
+          </div>
+
+          <div class="expertise-grid">
+            <div class="expertise-card">
+              <div class="expertise-icon">
+                <i class="fas fa-balance-scale"></i>
+              </div>
+              <h3 class="expertise-title">Tax Optimization</h3>
+              <p class="expertise-description">
+                Our tax specialists identify legal ways to minimize tax
+                liabilities while ensuring full compliance with tax laws and
+                regulations.
+              </p>
+            </div>
+
+            <div class="expertise-card">
+              <div class="expertise-icon">
+                <i class="fas fa-sync-alt"></i>
+              </div>
+              <h3 class="expertise-title">Business Restructuring</h3>
+              <p class="expertise-description">
+                We provide guidance on business restructuring to optimize
+                financial performance and achieve long-term goals.
+              </p>
+            </div>
+
+            <div class="expertise-card">
+              <div class="expertise-icon">
+                <i class="fas fa-file-contract"></i>
+              </div>
+              <h3 class="expertise-title">Financial Compliance</h3>
+              <p class="expertise-description">
+                Our team ensures your business remains compliant with all
+                financial regulations and reporting requirements.
+              </p>
+            </div>
+
+            <div class="expertise-card">
+              <div class="expertise-icon">
+                <i class="fas fa-users"></i>
+              </div>
+              <h3 class="expertise-title">CFO Advisory</h3>
+              <p class="expertise-description">
+                Executive-level financial guidance and strategy development
+                without the cost of a full-time CFO.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Call to Action Section -->
+      <section class="cta">
+        <div class="container">
+          <h2>Ready to transform your financial management?</h2>
+          <p>
+            Contact us today to discover how Apex Vision MNS can optimize your
+            accounting processes and drive financial success.
+          </p>
+          <a href="contact.html" class="btn btn-white">Contact Us Now</a>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-column">
+            <div class="footer-logo">
+              <img class="footer-img" src="attached_assests/logo.jpg" alt="" />
+              <span>
+                <span class="logo-apex-footer">Apex</span
+                ><span class="logo-vision-footer">Vision</span>
+                <span class="logo-mns-footer"> MNS</span>
+              </span>
+            </div>
+            <p>Providing exceptional healthcare and accounting services.</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+
+          <div class="footer-column">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="services.html">Services</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h3>Legal</h3>
+            <ul class="footer-links">
+              <li><a href="terms.html">Terms & Conditions</a></li>
+              <li><a href="privacy.html">Privacy Policy</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h3>Contact</h3>
+            <ul class="contact-info">
+              <li>
+                <i class="fas fa-map-marker-alt"></i> 971 US HIGHWAY 202N STE R
+                BRANCHBURG, NEW JERSEY 08876
+              </li>
+              <li><i class="fas fa-envelope"></i> info@apexvisionmns.com</li>
+              <li><i class="fas fa-phone"></i> 2408170024</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="copyright">
+          <p>
+            &copy; <span id="current-year"></span> Apex Vision MNS. All Rights
+            Reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

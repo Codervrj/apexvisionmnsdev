@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Services - Apex Vision MNS</title>
+    <meta
+      name="description"
+      content="Discover our comprehensive range of healthcare and accounting solutions designed to meet your needs."
+    />
+    <link rel="icon" type="image/png" href="/attached_assests/favicon.jpg">
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Page-specific styles */
+      .services-header {
+        background: linear-gradient(45deg, var(--primary), var(--secondary));
+        color: white;
+        padding: 5rem 0;
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+      }
+
+      .service-list {
+        padding: 5rem 0;
+      }
+
+      .service-item {
+        background-color: rgb(255, 251, 251);
+        border-radius: var(--border-radius);
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      }
+
+      .service-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1.5rem;
+      }
+
+      .service-icon-large {
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 1rem;
+      }
+
+      .service-title {
+        font-size: 1.5rem;
+      }
+
+      .service-desc {
+        color: var(--neutral-300);
+        margin-bottom: 1.5rem;
+      }
+
+      .service-features {
+        list-style: none;
+        margin-bottom: 1.5rem;
+      }
+
+      .service-features li {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 0.75rem;
+      }
+
+      .service-features .fa-check {
+        color: var(--primary);
+        margin-right: 0.75rem;
+        margin-top: 0.25rem;
+      }
+
+      .service-features h4 {
+        margin-bottom: 0.25rem;
+      }
+
+      .service-features p {
+        font-size: 0.875rem;
+        color: var(--neutral-300);
+      }
+
+      .service-btn {
+        display: inline-block;
+        padding: 0.5rem 1.5rem;
+        border-radius: var(--border-radius);
+        font-weight: 600;
+        transition: all var(--transition-speed);
+      }
+
+      .healthcare-btn {
+        background-color: var(--primary);
+        color: white;
+      }
+
+      .healthcare-btn:hover {
+        background-color: var(--primary-dark);
+        transform: translateY(-2px);
+      }
+
+      .accounting-btn {
+        background-color: var(--primary);
+        color: white;
+      }
+
+      .accounting-btn:hover {
+        background-color: var(--primary-dark);
+        transform: translateY(-2px);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header and Navigation -->
+    <header class="header">
+      <div class="navbar-container">
+        <nav class="navbar">
+          <a href="index.html" style="text-decoration: none">
+            <div class="logo">
+              <div class="logo-icon">
+                <img class="logo-img" src="attached_assests/logo.jpg" alt="" />
+              </div>
+              <span class="logo-text">
+                <span class="logo-apex">Apex</span
+                ><span class="logo-vision"> Vision</span> MNS
+              </span>
+            </div>
+          </a>
+
+          <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html" class="active">Services</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+
+          <div class="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Mobile Navigation Menu -->
+    <div class="mobile-menu">
+      <div class="mobile-menu-header">
+        <span>Menu</span>
+        <button class="close-menu-btn"><i class="fas fa-times"></i></button>
+      </div>
+      <ul class="mobile-nav-links">
+        <li>
+          <a href="index.html"><i class="fas fa-home"></i> Home</a>
+        </li>
+        <li>
+          <a href="services.html" class="active"
+            ><i class="fas fa-th-large"></i> Services</a
+          >
+        </li>
+        <li>
+          <a href="about.html"><i class="fas fa-info-circle"></i> About Us</a>
+        </li>
+        <li>
+          <a href="contact.html"><i class="fas fa-phone"></i> Contact</a>
+        </li>
+      </ul>
+    </div>
+
+    <main>
+      <!-- Services Header -->
+      <section class="services-header">
+        <div class="container">
+          <h1 class="service-header-title">Our <span>Services</span></h1>
+          <p>
+            Discover our comprehensive range of healthcare and accounting
+            solutions designed to meet your needs.
+          </p>
+        </div>
+      </section>
+
+      <!-- Services List -->
+      <section class="service-list">
+        <div class="container">
+          <div class="service-grid">
+            <!-- Healthcare Services -->
+            <div class="service-item">
+              <div class="service-header">
+                <div class="service-icon-large healthcare-icon">
+                  <i class="fas fa-heartbeat"></i>
+                </div>
+                <h2 class="service-title">Healthcare Services</h2>
+              </div>
+
+              <p class="service-desc">
+                Our comprehensive healthcare services are designed to provide
+                exceptional care and support for individuals and organizations.
+              </p>
+
+              <ul class="service-features">
+                <li>
+                  <i class="fas fa-check"></i>
+                  <div>
+                    <h4>Medical Consultations</h4>
+                    <p>
+                      Expert medical advice from experienced healthcare
+                      professionals.
+                    </p>
+                  </div>
+                </li>
+                <li>
+                  <i class="fas fa-check"></i>
+                  <div>
+                    <h4>Preventive Care</h4>
+                    <p>
+                      Comprehensive screenings and preventive health measures.
+                    </p>
+                  </div>
+                </li>
+                <li>
+                  <i class="fas fa-check"></i>
+                  <div>
+                    <h4>Health Management</h4>
+                    <p>Ongoing support for chronic condition management.</p>
+                  </div>
+                </li>
+                <li>
+                  <i class="fas fa-check"></i>
+                  <div>
+                    <h4>Specialized Care</h4>
+                    <p>Targeted treatments for specific health conditions.</p>
+                  </div>
+                </li>
+              </ul>
+
+              <a href="healthcare.html" class="service-btn healthcare-btn">
+                Learn More
+              </a>
+            </div>
+
+            <!-- Accounting Services -->
+            <div class="service-item">
+              <div class="service-header">
+                <div class="service-icon-large accounting-icon">
+                  <i class="fas fa-chart-line"></i>
+                </div>
+                <h2 class="service-title">Accounting Services</h2>
+              </div>
+
+              <p class="service-desc">
+                Our accounting services provide financial clarity and strategic
+                insights to help businesses and individuals achieve their
+                financial goals.
+              </p>
+
+              <ul class="service-features">
+                <li>
+                  <i class="fas fa-check"></i>
+                  <div>
+                    <h4>Financial Reporting</h4>
+                    <p>Accurate and timely financial statements and reports.</p>
+                  </div>
+                </li>
+                <li>
+                  <i class="fas fa-check"></i>
+                  <div>
+                    <h4>Tax Planning & Preparation</h4>
+                    <p>Strategic tax planning to minimize liabilities.</p>
+                  </div>
+                </li>
+                <li>
+                  <i class="fas fa-check"></i>
+                  <div>
+                    <h4>Bookkeeping</h4>
+                    <p>Comprehensive recording of financial transactions.</p>
+                  </div>
+                </li>
+                <li>
+                  <i class="fas fa-check"></i>
+                  <div>
+                    <h4>Financial Advisory</h4>
+                    <p>Expert guidance for financial decision-making.</p>
+                  </div>
+                </li>
+              </ul>
+
+              <a href="accounting.html" class="service-btn accounting-btn">
+                Learn More
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Call to Action Section -->
+      <section class="cta">
+        <div class="container">
+          <h2>Ready to experience our services?</h2>
+          <p>
+            Contact us today to discover how Apex Vision MNS can transform your
+            healthcare and accounting experience.
+          </p>
+          <a href="contact.html" class="btn btn-white">Contact Us Now</a>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-column">
+            <div class="footer-logo">
+              <img class="footer-img" src="attached_assests/logo.jpg" alt="" />
+              <span>
+                <span class="logo-apex-footer">Apex</span
+                ><span class="logo-vision-footer"> Vision</span>
+                <span class="logo-mns-footer"> MNS</span>
+              </span>
+            </div>
+            <p>Providing exceptional healthcare and accounting services.</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+
+          <div class="footer-column">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="services.html">Services</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h3>Legal</h3>
+            <ul class="footer-links">
+              <li><a href="terms.html">Terms & Conditions</a></li>
+              <li><a href="privacy.html">Privacy Policy</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h3>Contact</h3>
+            <ul class="contact-info">
+              <li>
+                <i class="fas fa-map-marker-alt"></i> 971 US HIGHWAY 202N STE R BRANCHBURG, NEW JERSEY 08876
+              </li>
+              <li><i class="fas fa-envelope"></i> info@apexvisionmns.com</li>
+              <li><i class="fas fa-phone"></i> 2408170024</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="copyright">
+          <p>
+            &copy; <span id="current-year"></span> Apex Vision MNS. All Rights
+            Reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

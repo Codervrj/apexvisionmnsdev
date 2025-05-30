@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Healthcare Services - Apex Vision MNS</title>
+    <meta
+      name="description"
+      content="Discover our comprehensive healthcare services including patient registration, coding, claim management, and more."
+    />
+    <link rel="icon" type="image/png" href="/attached_assests/favicon.jpg" />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Page-specific styles */
+      .healthcare-header {
+        background: linear-gradient(45deg, var(--primary), var(--secondary));
+        color: white;
+        padding: 5rem 0;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .healthcare-header::before {
+        content: "";
+        position: absolute;
+        top: -100px;
+        right: -100px;
+        width: 400px;
+        height: 400px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+      }
+
+      .healthcare-cards {
+        padding: 5rem 0;
+      }
+
+      .healthcare-card-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .healthcare-card {
+        background-color: rgb(255, 251, 251);
+        border-radius: var(--border-radius);
+        padding: 2rem;
+        box-shadow: var(--box-shadow);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .healthcare-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--primary);
+        z-index: -1;
+        transform: scaleY(0);
+        transform-origin: bottom;
+        transition: transform 0.4s ease;
+      }
+
+      .healthcare-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+      }
+
+      .healthcare-card:hover::before {
+        transform: scaleY(1);
+      }
+
+      .healthcare-card:hover .healthcare-card-title,
+      .healthcare-card:hover .healthcare-card-description {
+        color: white;
+      }
+
+      .healthcare-card-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 60px;
+        height: 60px;
+        background-color: rgba(59, 130, 246, 0.1);
+        color: var(--primary);
+        border-radius: 50%;
+        margin-bottom: 1.5rem;
+        font-size: 1.5rem;
+        transition: all 0.3s ease;
+      }
+
+      .healthcare-card:hover .healthcare-card-icon {
+        background-color: rgba(255, 255, 255, 0.2);
+        color: white;
+      }
+
+      .healthcare-card-title {
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
+        transition: all 0.3s ease;
+      }
+
+      .healthcare-card-description {
+        color: var(--neutral-300);
+        font-size: 0.95rem;
+        transition: all 0.3s ease;
+        flex-grow: 1;
+      }
+
+      .mission-section {
+        padding: 5rem 0;
+      }
+
+      .mission-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        align-items: center;
+      }
+
+      .mission-content h2 {
+        font-size: 2.25rem;
+        margin-bottom: 1.5rem;
+        /* color: var(--neutral-400); */
+        color: #164a9e;
+      }
+
+      .mission-content p {
+        margin-bottom: 1.5rem;
+        color: var(--neutral-300);
+        line-height: 1.7;
+      }
+
+      .core-principles {
+        margin-top: 2rem;
+      }
+
+      .core-principles h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1.25rem;
+        /* color: var(--neutral-400); */
+        color: #164a9e;
+      }
+
+      .principle-item {
+        display: flex;
+        margin-bottom: 1.25rem;
+      }
+
+      .principle-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 2.5rem;
+        height: 2.5rem;
+        background-color: rgba(59, 130, 246, 0.1);
+        color: var(--primary);
+        border-radius: 50%;
+        margin-right: 1rem;
+      }
+
+      .principle-content h4 {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+        color: var(--neutral-400);
+      }
+
+      .principle-content p {
+        font-size: 0.95rem;
+        color: var(--neutral-300);
+        margin-bottom: 0;
+      }
+
+      .highlights-image {
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        position: relative;
+        height: 100%;
+        min-height: 400px;
+        box-shadow: var(--box-shadow);
+      }
+
+      .highlights-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .highlight-badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+
+      .highlight-badge {
+        display: flex;
+        align-items: center;
+        padding: 0.75rem 1.25rem;
+        background-color: rgb(255, 251, 251);
+        border-radius: var(--border-radius);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+      }
+
+      .highlight-badge:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .highlight-badge i {
+        color: var(--primary);
+        margin-right: 0.75rem;
+        font-size: 1.25rem;
+      }
+
+      .highlight-badge span {
+        font-weight: 600;
+        color: var(--neutral-400);
+      }
+
+      .services-offered {
+        padding: 5rem 0;
+      }
+
+      .virtual-staffing {
+        padding: 5rem 0;
+      }
+
+      .expertise-section {
+        padding: 5rem 0;
+      }
+
+      .expertise-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 2rem;
+      }
+
+      .expertise-card {
+        background-color: rgb(255, 251, 251);
+        border-radius: var(--border-radius);
+        padding: 2rem;
+        box-shadow: var(--box-shadow);
+        transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .expertise-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .expertise-icon {
+        width: 3rem;
+        height: 3rem;
+        background-color: rgba(59, 130, 246, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+        color: var(--primary);
+        font-size: 1.5rem;
+        transition: all 0.3s ease;
+      }
+
+      .expertise-card:hover .expertise-icon {
+        background-color: var(--primary);
+        color: white;
+      }
+
+      .expertise-title {
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
+      }
+
+      .expertise-description {
+        color: var(--neutral-300);
+        line-height: 1.6;
+      }
+
+      @media (max-width: 992px) {
+        .mission-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .highlights-image {
+          min-height: 300px;
+          margin-top: 2rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .healthcare-card-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .expertise-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header and Navigation -->
+    <header class="header">
+      <div class="navbar-container">
+        <nav class="navbar">
+          <a href="index.html" style="text-decoration: none">
+            <div class="logo">
+              <div class="logo-icon">
+                <img class="logo-img" src="attached_assests/logo.jpg" alt="" />
+              </div>
+              <span class="logo-text">
+                <span class="logo-apex">Apex</span
+                ><span class="logo-vision"> Vision</span> MNS
+              </span>
+            </div>
+          </a>
+
+          <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+
+          <div class="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Mobile Navigation Menu -->
+    <div class="mobile-menu">
+      <div class="mobile-menu-header">
+        <span>Menu</span>
+        <button class="close-menu-btn"><i class="fas fa-times"></i></button>
+      </div>
+      <ul class="mobile-nav-links">
+        <li>
+          <a href="index.html"><i class="fas fa-home"></i> Home</a>
+        </li>
+        <li>
+          <a href="services.html"><i class="fas fa-th-large"></i> Services</a>
+        </li>
+        <li>
+          <a href="about.html"><i class="fas fa-info-circle"></i> About Us</a>
+        </li>
+        <li>
+          <a href="contact.html"><i class="fas fa-phone"></i> Contact</a>
+        </li>
+      </ul>
+    </div>
+
+    <main>
+      <!-- Healthcare Header -->
+      <section class="healthcare-header">
+        <div class="container">
+          <h1>Healthcare Services</h1>
+          <p>
+            Comprehensive healthcare solutions tailored to your specific needs
+          </p>
+        </div>
+      </section>
+
+      <!-- Healthcare Service Cards -->
+      <section class="healthcare-cards">
+        <div class="container">
+          <div class="section-header">
+            <h2>Our Healthcare Services</h2>
+            <p>
+              We offer a wide range of healthcare services to meet your specific
+              needs and requirements
+            </p>
+          </div>
+
+          <div class="healthcare-card-grid">
+            <!-- Card 1: Patient Registration -->
+            <div class="healthcare-card">
+              <div class="healthcare-card-icon">
+                <i class="fas fa-user-plus"></i>
+              </div>
+              <h3 class="healthcare-card-title">Patient Demographics</h3>
+              <p class="healthcare-card-description">
+                Streamlined patient registration process that ensures accurate
+                collection of patient demographic and insurance information.
+              </p>
+            </div>
+
+            <!-- Card 2: Insurance Verification -->
+            <div class="healthcare-card">
+              <div class="healthcare-card-icon">
+                <i class="fas fa-check-circle"></i>
+              </div>
+              <h3 class="healthcare-card-title">Insurance Verification</h3>
+              <p class="healthcare-card-description">
+                Thorough verification of insurance eligibility, benefits, and
+                coverage details to reduce claim rejections.
+              </p>
+            </div>
+
+            <div class="healthcare-card">
+              <div class="healthcare-card-icon">
+                <i class="fa-solid fa-shield-halved"></i>
+              </div>
+              <h3 class="healthcare-card-title">Authorization Handling</h3>
+              <p class="healthcare-card-description">
+                Efficient management of prior authorizations to ensure timely
+                approvals and minimize delays in patient care delivery.
+              </p>
+            </div>
+
+            <!-- Card 3: Coding -->
+            <div class="healthcare-card">
+              <div class="healthcare-card-icon">
+                <i class="fas fa-code"></i>
+              </div>
+              <h3 class="healthcare-card-title">Coding</h3>
+              <p class="healthcare-card-description">
+                Expert medical coding services following the latest ICD-10, CPT,
+                and HCPCS guidelines for accurate billing.
+              </p>
+            </div>
+
+            <!-- Card 4: Billing and Claims Submission -->
+
+            <div class="healthcare-card">
+              <div class="healthcare-card-icon">
+                <i class="fas fa-hand-holding-usd"></i>
+              </div>
+              <h3 class="healthcare-card-title">
+                Billing and Claims Submission
+              </h3>
+              <p class="healthcare-card-description">
+                Accurate preparation and electronic submission of claims to
+                reduce denials and speed up reimbursement cycles.
+              </p>
+            </div>
+
+            <!-- Card 5: Charge Entry -->
+            <div class="healthcare-card">
+              <div class="healthcare-card-icon">
+                <i class="fas fa-file-invoice-dollar"></i>
+              </div>
+              <h3 class="healthcare-card-title">Charge Entry</h3>
+              <p class="healthcare-card-description">
+                Precise charge entry services to ensure all services are
+                properly billed and documented.
+              </p>
+            </div>
+
+            <!-- Card 6: Payment Posting -->
+            <div class="healthcare-card">
+              <div class="healthcare-card-icon">
+                <i class="fas fa-credit-card"></i>
+              </div>
+              <h3 class="healthcare-card-title">Payment Posting</h3>
+              <p class="healthcare-card-description">
+                Efficient and accurate posting of payments from various sources
+                including insurance carriers and patients.
+              </p>
+            </div>
+
+            <!-- Card 7: Clearing House Rejections -->
+            <div class="healthcare-card">
+              <div class="healthcare-card-icon">
+                <i class="fas fa-exclamation-triangle"></i>
+              </div>
+              <h3 class="healthcare-card-title">Clearing House Rejections</h3>
+              <p class="healthcare-card-description">
+                Identification and resolution of clearinghouse rejections to
+                ensure claims are processed properly.
+              </p>
+            </div>
+
+            <!-- Card 8: Claim Transmission -->
+            <div class="healthcare-card">
+              <div class="healthcare-card-icon">
+                <i class="fas fa-paper-plane"></i>
+              </div>
+              <h3 class="healthcare-card-title">Claim Transmission</h3>
+              <p class="healthcare-card-description">
+                Timely and accurate electronic submission of claims to insurance
+                carriers to expedite reimbursement.
+              </p>
+            </div>
+
+            <!-- Card 9: Audit Quality Check -->
+            <div class="healthcare-card">
+              <div class="healthcare-card-icon">
+                <i class="fas fa-tasks"></i>
+              </div>
+              <h3 class="healthcare-card-title">Audit Quality Check</h3>
+              <p class="healthcare-card-description">
+                Thorough quality checks and audits to ensure compliance with
+                regulations and identify improvement areas.
+              </p>
+            </div>
+
+            <!-- Card 10: Denials Management -->
+            <div class="healthcare-card">
+              <div class="healthcare-card-icon">
+                <i class="fas fa-ban"></i>
+              </div>
+              <h3 class="healthcare-card-title">Denials Management</h3>
+              <p class="healthcare-card-description">
+                Effective handling of denied claims with analysis, appeals, and
+                follow-up to maximize reimbursement.
+              </p>
+            </div>
+
+            <!-- Card 11: AR Recovery -->
+            <div class="healthcare-card">
+              <div class="healthcare-card-icon">
+                <i class="fas fa-sync"></i>
+              </div>
+              <h3 class="healthcare-card-title">AR Recovery</h3>
+              <p class="healthcare-card-description">
+                Systematic accounts receivable management to recover outstanding
+                balances and reduce aging AR.
+              </p>
+            </div>
+
+            <!-- Card 12: Patient Statement -->
+            <div class="healthcare-card">
+              <div class="healthcare-card-icon">
+                <i class="fas fa-file-alt"></i>
+              </div>
+              <h3 class="healthcare-card-title">Patient Statement</h3>
+              <p class="healthcare-card-description">
+                Clear and comprehensive patient statements to facilitate
+                understanding and prompt payment.
+              </p>
+            </div>
+
+            <!-- Card 13: Collections -->
+            <div class="healthcare-card">
+              <div class="healthcare-card-icon">
+                <i class="fas fa-hand-holding-usd"></i>
+              </div>
+              <h3 class="healthcare-card-title">Collections</h3>
+              <p class="healthcare-card-description">
+                Professional collection services to recover patient balances
+                while maintaining positive relationships.
+              </p>
+            </div>
+
+            <!-- Card 14: Referral Management -->
+            <div class="healthcare-card">
+              <div class="healthcare-card-icon">
+                <i class="fas fa-exchange-alt"></i>
+              </div>
+              <h3 class="healthcare-card-title">Referral Management</h3>
+              <p class="healthcare-card-description">
+                Streamlined referral management ensuring proper authorization,
+                documentation, and follow-up.
+              </p>
+            </div>
+
+            <div class="healthcare-card">
+              <div class="healthcare-card-icon">
+                <i class="fa-solid fa-dna"></i>
+              </div>
+              <h3 class="healthcare-card-title">PCR AND ADR</h3>
+              <p class="healthcare-card-description"></p>
+            </div>
+
+            <div class="healthcare-card">
+              <div class="healthcare-card-icon"></div>
+              <h3 class="healthcare-card-title">QA</h3>
+              <p class="healthcare-card-description"></p>
+            </div>
+
+            <div class="healthcare-card">
+              <div class="healthcare-card-icon">
+                <i class="fas fa-file-alt"></i>
+              </div>
+              <h3 class="healthcare-card-title">Custom Report</h3>
+              <p class="healthcare-card-description">
+                Tailored reporting solutions that provide insights into key
+                performance indicators and operational trends for informed
+                decision-making.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Mission and Core Principles Section -->
+      <section class="mission-section">
+        <div class="container">
+          <div class="mission-grid">
+            <div class="mission-content">
+              <h2>Our Mission & Core Principles</h2>
+              <p>
+                At Apex Vision MNS, our mission is to deliver exceptional
+                healthcare management services that enhance operational
+                efficiency, maximize revenue, and improve patient satisfaction
+                for healthcare providers.
+              </p>
+              <p>
+                We believe in creating partnerships with our clients based on
+                trust, innovation, and excellence, helping them navigate the
+                complex healthcare landscape with confidence.
+              </p>
+
+              <div class="core-principles">
+                <h3>Our Core Principles</h3>
+
+                <div class="principle-item">
+                  <div class="principle-icon">
+                    <i class="fas fa-check"></i>
+                  </div>
+                  <div class="principle-content">
+                    <h4>Patient-Centered Approach</h4>
+                    <p>
+                      We prioritize patient needs and satisfaction in all our
+                      services, ensuring positive experiences and outcomes.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="principle-item">
+                  <div class="principle-icon">
+                    <i class="fas fa-shield-alt"></i>
+                  </div>
+                  <div class="principle-content">
+                    <h4>Integrity & Compliance</h4>
+                    <p>
+                      We adhere to the highest ethical standards and maintain
+                      strict compliance with healthcare regulations.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="principle-item">
+                  <div class="principle-icon">
+                    <i class="fas fa-chart-line"></i>
+                  </div>
+                  <div class="principle-content">
+                    <h4>Continuous Improvement</h4>
+                    <p>
+                      We constantly evaluate and enhance our processes to
+                      deliver better results for our clients.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="principle-item">
+                  <div class="principle-icon">
+                    <i class="fas fa-users"></i>
+                  </div>
+                  <div class="principle-content">
+                    <h4>Collaborative Partnerships</h4>
+                    <p>
+                      We work closely with our clients to understand their
+                      unique needs and tailor our solutions accordingly.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="highlights-section">
+              <div class="highlights-image">
+                <img
+                  src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=800"
+                  alt="Healthcare professionals"
+                />
+              </div>
+
+              <div class="highlight-badges">
+                <div class="highlight-badge">
+                  <i class="fas fa-clock"></i>
+                  <span>24/7 Services</span>
+                </div>
+
+                <div class="highlight-badge">
+                  <i class="fas fa-award"></i>
+                  <span>25+ Years Experience</span>
+                </div>
+
+                <div class="highlight-badge">
+                  <i class="fas fa-user-md"></i>
+                  <span>Certified Professionals</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Services Offered Section -->
+      <section class="services-offered">
+        <div class="container">
+          <div class="section-header">
+            <h2>Services Offered</h2>
+            <p>
+              Our comprehensive range of healthcare management services designed
+              to optimize your practice
+            </p>
+          </div>
+
+          <div class="expertise-grid">
+            <div class="expertise-card">
+              <div class="expertise-icon">
+                <i class="fas fa-file-medical"></i>
+              </div>
+              <h3 class="expertise-title">Medical Billing</h3>
+              <p class="expertise-description">
+                Comprehensive medical billing services including claim
+                submission, follow-up, and payment posting to maximize revenue.
+              </p>
+            </div>
+
+            <div class="expertise-card">
+              <div class="expertise-icon">
+                <i class="fas fa-money-check-alt"></i>
+              </div>
+              <h3 class="expertise-title">Revenue Cycle Management</h3>
+              <p class="expertise-description">
+                End-to-end revenue cycle management solutions to optimize
+                financial performance and reduce administrative burden.
+              </p>
+            </div>
+
+            <div class="expertise-card">
+              <div class="expertise-icon">
+                <i class="fas fa-laptop-medical"></i>
+              </div>
+              <h3 class="expertise-title">Practice Management</h3>
+              <p class="expertise-description">
+                Streamlined practice management services to enhance operational
+                efficiency and patient satisfaction.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Virtual Staffing Section -->
+      <section class="virtual-staffing">
+        <div class="container">
+          <div class="section-header">
+            <h2>Virtual Staffing Services</h2>
+            <p>
+              Flexible and scalable staffing solutions to meet your healthcare
+              management needs
+            </p>
+          </div>
+
+          <div class="mission-grid">
+            <div class="mission-content">
+              <p>
+                Our virtual staffing services provide healthcare providers with
+                access to skilled professionals without the overhead costs of
+                in-house employees. We offer:
+              </p>
+
+              <div class="core-principles">
+                <div class="principle-item">
+                  <div class="principle-icon">
+                    <i class="fas fa-user-tie"></i>
+                  </div>
+                  <div class="principle-content">
+                    <h4>Medical Billers & Coders</h4>
+                    <p>
+                      Experienced professionals with certifications in medical
+                      coding and billing.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="principle-item">
+                  <div class="principle-icon">
+                    <i class="fas fa-headset"></i>
+                  </div>
+                  <div class="principle-content">
+                    <h4>Patient Support Representatives</h4>
+                    <p>
+                      Dedicated staff to handle patient inquiries, scheduling,
+                      and follow-ups.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="principle-item">
+                  <div class="principle-icon">
+                    <i class="fas fa-file-invoice"></i>
+                  </div>
+                  <div class="principle-content">
+                    <h4>Claims Specialists</h4>
+                    <p>
+                      Specialists in managing and resolving complex claims and
+                      denials.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="principle-item">
+                  <div class="principle-icon">
+                    <i class="fas fa-chart-pie"></i>
+                  </div>
+                  <div class="principle-content">
+                    <h4>Revenue Cycle Analysts</h4>
+                    <p>
+                      Experts in analyzing financial performance and
+                      implementing improvements.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <p>
+                Our virtual staffing services are flexible and scalable,
+                allowing you to adjust resources based on your practice's needs.
+                We provide thorough training, quality monitoring, and continuous
+                performance improvement to ensure optimal results.
+              </p>
+            </div>
+
+            <div class="highlights-image">
+              <img
+                src="https://images.unsplash.com/photo-1521790361543-f645cf042ec4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=800"
+                alt="Virtual healthcare staff"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Our Expertise Section -->
+      <section class="expertise-section">
+        <div class="container">
+          <div class="section-header">
+            <h2>Our Expertise</h2>
+            <p>
+              Areas where we excel in providing exceptional healthcare
+              management services
+            </p>
+          </div>
+
+          <div class="expertise-grid">
+            <div class="expertise-card">
+              <div class="expertise-icon">
+                <i class="fas fa-stethoscope"></i>
+              </div>
+              <h3 class="expertise-title">Specialty-Specific Knowledge</h3>
+              <p class="expertise-description">
+                Our team has extensive experience across various medical
+                specialties, ensuring accurate coding and billing for
+                specialty-specific procedures and services.
+              </p>
+            </div>
+
+            <div class="expertise-card">
+              <div class="expertise-icon">
+                <i class="fas fa-file-contract"></i>
+              </div>
+              <h3 class="expertise-title">Payer Contract Management</h3>
+              <p class="expertise-description">
+                We analyze and negotiate payer contracts to ensure optimal
+                reimbursement rates and favorable terms for our clients.
+              </p>
+            </div>
+
+            <div class="expertise-card">
+              <div class="expertise-icon">
+                <i class="fas fa-book-medical"></i>
+              </div>
+              <h3 class="expertise-title">Regulatory Compliance</h3>
+              <p class="expertise-description">
+                We stay up-to-date with changing healthcare regulations to
+                ensure your practice remains compliant with all applicable laws
+                and requirements.
+              </p>
+            </div>
+
+            <div class="expertise-card">
+              <div class="expertise-icon">
+                <i class="fa-solid fa-magnifying-glass-chart"></i>
+              </div>
+              <h3 class="expertise-title">Data Analytics</h3>
+              <p class="expertise-description">
+                We provide comprehensive data analysis and reporting to help you
+                identify trends, opportunities, and areas for improvement in
+                your practice.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Call to Action Section -->
+      <section class="cta">
+        <div class="container">
+          <h2>Ready to optimize your healthcare practice?</h2>
+          <p>
+            Contact us today to discover how Apex Vision MNS can transform your
+            healthcare management experience.
+          </p>
+          <a href="contact.html" class="btn btn-white">Contact Us Now</a>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-column">
+            <div class="footer-logo">
+              <img class="footer-img" src="attached_assests/logo.jpg" alt="" />
+              <span>
+                <span class="logo-apex-footer">Apex</span
+                ><span class="logo-vision-footer"> Vision</span>
+                <span class="logo-mns-footer"> MNS</span>
+              </span>
+            </div>
+            <p>Providing exceptional healthcare and accounting services.</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+
+          <div class="footer-column">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="services.html">Services</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h3>Legal</h3>
+            <ul class="footer-links">
+              <li><a href="terms.html">Terms & Conditions</a></li>
+              <li><a href="privacy.html">Privacy Policy</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h3>Contact</h3>
+            <ul class="contact-info">
+              <li>
+                <i class="fas fa-map-marker-alt"></i> 971 US HIGHWAY 202N STE R
+                BRANCHBURG, NEW JERSEY 08876
+              </li>
+              <li><i class="fas fa-envelope"></i> info@apexvisionmns.com</li>
+              <li><i class="fas fa-phone"></i> 2408170024</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="copyright">
+          <p>
+            &copy; <span id="current-year"></span> Apex Vision MNS. All Rights
+            Reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
