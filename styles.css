@@ -248,8 +248,7 @@ main {
 
 .nav-links {
     display: flex;
-    gap: 2rem;
-    margin-left: 10px;
+    gap: 4rem;
 }
 
 .nav-links a {
